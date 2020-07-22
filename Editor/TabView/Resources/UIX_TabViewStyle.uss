@@ -1,0 +1,20 @@
+﻿.uix-tabview {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.uix-tabview__header-bar {
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    background-color: #303030;
+    padding: 0 10px;
+}
+
+.uix-tabview__content {
+    background-color: #383838;
+    height: 100%;
+    display: flex;
+}
+
