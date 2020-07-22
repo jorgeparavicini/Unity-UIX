@@ -1,0 +1,9 @@
+{
+  "name": "com.jorgeparavicini.uix",
+  "version": "0.0.1",
+  "displayName": "UIX",
+  "description": "Adds various UI modules for the Unity Editor based on the new UI Toolkit",
+  "unity": "2020.1",
+  "unityRelease": "0b14",
+  "type": "library"
+}
