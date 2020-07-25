@@ -7,8 +7,7 @@
     <engine:VisualElement class="uix-tabview-header">
         <!-- The select button spans the entire header. 
         It is not the root as the click event from the close button would trickle down to the select button. -->
-        <engine:Button name="uix-tabview-header__select" class="uix-tabview-header__select"
-                       binding-path="_tabName"/>
+        <engine:Button name="uix-tabview-header__select" class="uix-tabview-header__select"/>
 
         <!-- Close Button -->
         <engine:Button name="uix-tabview-header__close" class="uix-tabview-header__close">

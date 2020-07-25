@@ -5,7 +5,7 @@
         xsi:noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd"
 >
     <engine:VisualElement class="uix-tabview">
-        <!-- Tab Bar -->
+        <!-- Header Bar -->
         <engine:VisualElement name="uix-tabview__header-bar" class="uix-tabview__header-bar"/>
 
         <!-- Content -->
