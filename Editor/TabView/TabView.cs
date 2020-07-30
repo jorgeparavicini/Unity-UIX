@@ -96,7 +96,7 @@ namespace UIX
             if (tab is null) throw new ArgumentNullException(nameof(tab));
             // REVIEW: Not sure if the same tab should be allowed to be added. Would cause problems to the RemoveTabAt Method.
             if (_tabs.Contains(tab)) throw new ArgumentException("Tab has already been added", nameof(tab));
-            if (string.IsNullOrWhiteSpace(tab.name))
+            if (string.IsNullOrWhiteSpace(tab.TabName))
             {
                 tab.TabName = $"Tab {_tabs.Count + 1}";
             }
