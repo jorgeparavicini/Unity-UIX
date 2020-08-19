@@ -8,7 +8,7 @@ namespace UIX
         private static VisualTreeAsset RootTree => Resources.Load<VisualTreeAsset>("UIX_DefaultTab");
         private static StyleSheet StyleSheet => Resources.Load<StyleSheet>("UIX_DefaultTabStyle");
 
-        private static int _tabIndex = 0;
+        private static int _tabIndex;
 
         public Tab CreateNewTab()
         {

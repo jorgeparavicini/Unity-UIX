@@ -1,50 +1,35 @@
 ﻿using System;
 using System.Linq;
+using JetBrains.Annotations;
+using UnityEditor;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace UIX
 {
-    public class TabHeader : VisualElement
+    internal class TabHeader : VisualElement
     {
-        #region Fields
-
-        private bool _selected;
-
-        #endregion
+        #region Fields, Properties & Events
         
-        #region UI Resources
-
         private const string SelectName = "uix-tabview-header__select";
         private const string CloseName = "uix-tabview-header__close";
         private const string SelectedClass = "uix-tabview-header--selected";
-        
+
+        private bool _selected;
+
         private static VisualTreeAsset TabHeaderTree => Resources.Load<VisualTreeAsset>("UIX_TabHeader");
         private static StyleSheet HeaderStyleSheet => Resources.Load<StyleSheet>("UIX_TabHeaderStyle");
-        
-        public new class UxmlFactory : UxmlFactory<TabHeader> {}
-
-        #endregion
-
-        #region Events
-
-        public event Action Select = delegate { };
-        public event Action Close = delegate { };
-
-        #endregion
-
-        #region Properties
-        
         private VisualElement Content => Children().First();
         private Button SelectButton => this.Q<Button>(SelectName);
 
-        public string Title
+        internal string Title
         {
             get => SelectButton.text;
             set => SelectButton.text = value;
         }
 
-        public bool Selected
+        internal bool Selected
         {
             get => _selected;
             set
@@ -54,12 +39,15 @@ namespace UIX
                 else Content.RemoveFromClassList(SelectedClass);
             }
         }
+        
+        internal event Action Select = delegate { };
+        internal event Action Close = delegate { };
 
         #endregion
 
         #region Constructors
 
-        public TabHeader()
+        internal TabHeader()
         {
             TabHeaderTree.CloneTree(this);
             styleSheets.Add(HeaderStyleSheet);
@@ -68,6 +56,15 @@ namespace UIX
             this.Q<Button>(CloseName).clickable.clicked += () => Close();
         }
 
+        #endregion
+
+        #region Public Methods
+
+        internal void BindTitle(SerializedObject obj, string bindingPath)
+        {
+            SelectButton.bindingPath = bindingPath;
+            SelectButton.Bind(obj);
+        }
 
         #endregion
 

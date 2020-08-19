@@ -219,12 +219,9 @@ namespace UIX
             if (tab is null) throw new ArgumentNullException(nameof(tab));
             if (!_tabs.Contains(tab)) throw new ArgumentException("Tab has not been added to the registered tabs");
 
-            var header = new TabHeader {Title = tab.TabName};
-            HeaderBar.Add(header);
-            // Synchronize the title of the header with the name of the tab.
-            tab.NameChanged += () => header.Title = tab.TabName;
-            header.Select += () => SelectTab(tab);
-            header.Close += () => RemoveTab(tab);
+            HeaderBar.Add(tab.Header);
+            tab.Select += () => SelectTab(tab);
+            tab.Close += () => RemoveTab(tab);
         }
 
         /// <summary>
