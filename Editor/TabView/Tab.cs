@@ -60,7 +60,7 @@ namespace UIX
         #region Public Methods
 
         [UsedImplicitly]
-        internal void BindTitle(SerializedObject obj, string bindingPath)
+        public void BindTitle(SerializedObject obj, string bindingPath)
         {
             Header.BindTitle(obj, bindingPath);
         }
