@@ -52,11 +52,6 @@ namespace UIX
         /// If set to false, the last tab will not be allowed to be removed.
         /// </summary>
         public bool AllowNoTabs { get; set; } = false;
-        
-        /// <summary>
-        /// The data source used for creating new tabs.
-        /// </summary>
-        public ITabDataSource DataSource { get; set; } = new DefaultTabDataSource();
 
         #endregion
 
@@ -104,14 +99,6 @@ namespace UIX
             _tabs.Add(tab);
             AddTabHeader(tab);
             SelectTab(tab);
-        }
-
-        /// <summary>
-        /// Adds a new tab using the data source.
-        /// </summary>
-        public void AddNewTab()
-        {
-            AddTab(DataSource.CreateNewTab());
         }
 
         /// <summary>
