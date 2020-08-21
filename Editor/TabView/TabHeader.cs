@@ -63,7 +63,7 @@ namespace UIX
         internal void BindTitle(SerializedObject obj, string bindingPath)
         {
             SelectButton.bindingPath = bindingPath;
-            SelectButton.Bind(obj);
+            SelectButton.BindProperty(obj);
         }
 
         #endregion
