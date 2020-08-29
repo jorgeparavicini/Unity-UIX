@@ -12,8 +12,8 @@ namespace UIX
     {
         #region Fields, Properties & Events
         
-        private const string SelectName = "uix-tabview-header__select";
-        private const string CloseName = "uix-tabview-header__close";
+        internal const string SelectName = "uix-tabview-header__select";
+        internal const string CloseName = "uix-tabview-header__close";
         private const string SelectedClass = "uix-tabview-header--selected";
 
         private bool _selected;
@@ -39,9 +39,6 @@ namespace UIX
                 else Content.RemoveFromClassList(SelectedClass);
             }
         }
-        
-        internal event Action Select = delegate { };
-        internal event Action Close = delegate { };
 
         #endregion
 
@@ -51,9 +48,6 @@ namespace UIX
         {
             TabHeaderTree.CloneTree(this);
             styleSheets.Add(HeaderStyleSheet);
-
-            this.Q<Button>(SelectName).clickable.clicked += () => Select();
-            this.Q<Button>(CloseName).clickable.clicked += () => Close();
         }
 
         #endregion

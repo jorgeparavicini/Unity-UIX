@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using JetBrains.Annotations;
 using UIX.Common;
 using UnityEditor;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace UIX
@@ -33,7 +35,7 @@ namespace UIX
                 else RemoveFromClassList(UixResources.ExpandClassName);
             }
         }
-        
+
         public event Action Select = delegate { };
         public event Action Close = delegate { };
 
@@ -46,8 +48,8 @@ namespace UIX
             styleSheets.Add(UixResources.CommonStyleSheet);
             FitToParent = true;
             
-            Header.Select += Select;
-            Header.Close += Close;
+            Header.Q<Button>(TabHeader.SelectName).clicked += () => Select();
+            Header.Q<Button>(TabHeader.CloseName).clicked += () => Close();
         }
 
         public Tab(VisualElement content) : this()
