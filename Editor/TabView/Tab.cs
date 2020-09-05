@@ -11,11 +11,6 @@ namespace UIX
 {
     public class Tab : VisualElement
     {
-        [UsedImplicitly]
-        public new class UxmlFactory : UxmlFactory<Tab>
-        {
-        }
-
         #region Properties & Events
 
         internal TabHeader Header { get; } = new TabHeader();
@@ -34,6 +29,12 @@ namespace UIX
                 if (value) AddToClassList(UixResources.ExpandClassName);
                 else RemoveFromClassList(UixResources.ExpandClassName);
             }
+        }
+
+        public StyleSheet HeaderStyleSheet
+        {
+            get => Header.StyleSheet;
+            set => Header.StyleSheet = value;
         }
 
         public event Action Select = delegate { };

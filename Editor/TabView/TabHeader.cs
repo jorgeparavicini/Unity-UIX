@@ -22,6 +22,7 @@ namespace UIX
         private static StyleSheet HeaderStyleSheet => Resources.Load<StyleSheet>("UIX_TabHeaderStyle");
         private VisualElement Content => Children().First();
         private Button SelectButton => this.Q<Button>(SelectName);
+        private StyleSheet _styleSheet;
 
         internal string Title
         {
@@ -40,6 +41,17 @@ namespace UIX
             }
         }
 
+        internal StyleSheet StyleSheet
+        {
+            get => _styleSheet;
+            set
+            {
+                styleSheets.Remove(_styleSheet);
+                styleSheets.Add(value);
+                _styleSheet = value;
+            }
+        }
+
         #endregion
 
         #region Constructors
@@ -47,12 +59,12 @@ namespace UIX
         internal TabHeader()
         {
             TabHeaderTree.CloneTree(this);
-            styleSheets.Add(HeaderStyleSheet);
+            StyleSheet = HeaderStyleSheet;
         }
 
         #endregion
 
-        #region Public Methods
+        #region Internal Methods
 
         internal void BindTitle(SerializedObject obj, string bindingPath)
         {
