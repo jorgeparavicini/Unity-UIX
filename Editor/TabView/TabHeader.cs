@@ -11,7 +11,7 @@ namespace UIX
     internal class TabHeader : VisualElement
     {
         #region Fields, Properties & Events
-        
+
         internal const string SelectName = "uix-tabview-header__select";
         internal const string CloseName = "uix-tabview-header__close";
         private const string SelectedClass = "uix-tabview-header--selected";
@@ -46,7 +46,8 @@ namespace UIX
             get => _styleSheet;
             set
             {
-                styleSheets.Remove(_styleSheet);
+                if (_styleSheet != null)
+                    styleSheets.Remove(_styleSheet);
                 styleSheets.Add(value);
                 _styleSheet = value;
             }
@@ -73,6 +74,5 @@ namespace UIX
         }
 
         #endregion
-
     }
 }
